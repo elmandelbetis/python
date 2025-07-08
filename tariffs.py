@@ -24,10 +24,50 @@ Pais         Total      Precio de envio
           $100 - $249        $30
              >$250           $75
 
-UK           <$50            $20
+ UK          <$50            $20
           $50 - $99          $25
           $100 - $249        $55
              >$250           $110
  
 """
+
+mapeo_opciones = {
+                1: "USA",
+                2: "AU",
+                3: "CA",
+                4: "UK"}
+
+shipping = {"USA":[0, 10, 25, 30],
+            "AU":[10, 20, 50, 100],
+            "CA":[5, 15, 30, 75],
+            "UK":[20, 25, 55, 110]}
+
+subtotal = -1
+
+while subtotal < 0:
+    subtotal = int(input("Introduzca precio del producto (en euros): "))
+
+opcion_envio = int(input("Seleccione país de envío: 1-USA, 2-AU, 3-CA, 4-UK: "))
+while opcion_envio not in [1,2,3,4]:
+    print("Opción inválida. Por favor, vuelva a intentarlo.")
+    opcion_envio = int(input("Seleccione país de envío: 1-USA, 2-AU, 3-CA, 4-UK: "))
+    
+clave_pais = mapeo_opciones.get(opcion_envio)
+tarifas = shipping[clave_pais]
+
+if subtotal < 50:
+    costo_envio = tarifas[0]
+elif subtotal < 100:
+    costo_envio = tarifas[1]
+elif subtotal < 250:
+    costo_envio = tarifas[2]
+else:
+    costo_envio = tarifas[3]
+    
+total = subtotal + costo_envio
+
+print(f"Total: {total} €")
+
+    
+
 
