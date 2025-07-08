@@ -18,8 +18,13 @@ nombre = random.choice(lista_nombres)
 intento = 0
 max_intentos = 5
 
+print("LISTA DE NOMBRES:")
+for i, nombre in enumerate(lista_nombres, start=1):
+    print(nombre, end="\t")
+    if i % 5 == 0:
+        print()
 
-
+print()    
 adivina = input("Intenta adivinar el nombre: ")
 while adivina != nombre and intento < max_intentos:
     print(f"Incorrecto. Pista: el nombre contiene la letra {random.choice(nombre)}")
