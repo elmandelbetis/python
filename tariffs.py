@@ -35,26 +35,28 @@ mapeo_opciones = {
                 1: "USA",
                 2: "AU",
                 3: "CA",
-                4: "UK"}
+                4: "UK"}    # cada opción seleccionada lleva a un país diferente
 
 shipping = {"USA":[0, 10, 25, 30],
             "AU":[10, 20, 50, 100],
             "CA":[5, 15, 30, 75],
-            "UK":[20, 25, 55, 110]}
+            "UK":[20, 25, 55, 110]} # conjunto clave - valor: país - gasto añadido
 
 subtotal = -1
 
-while subtotal < 0:
-    subtotal = int(input("Introduzca precio del producto (en euros): "))
+while subtotal <= 0:
+    subtotal = float(input("Introduzca precio del producto (en euros): "))
 
 opcion_envio = int(input("Seleccione país de envío: 1-USA, 2-AU, 3-CA, 4-UK: "))
-while opcion_envio not in [1,2,3,4]:
-    print("Opción inválida. Por favor, vuelva a intentarlo.")
+
+while opcion_envio not in mapeo_opciones.keys():
+    print("Opción inválida. Por favor, vuelva a intentarlo.")   # Comprobar que se escoge correctamente el país
     opcion_envio = int(input("Seleccione país de envío: 1-USA, 2-AU, 3-CA, 4-UK: "))
     
-clave_pais = mapeo_opciones.get(opcion_envio)
-tarifas = shipping[clave_pais]
+clave_pais = mapeo_opciones.get(opcion_envio)   # Obtener el país mediante valores del 1º diccionario según la clave opción
+tarifas = shipping[clave_pais] # Obtener la lista de valores añadidos del país seleccionado con diccionario
 
+# Suma de los gastos de envío añadidos a partir del subtotal de la venta
 if subtotal < 50:
     costo_envio = tarifas[0]
 elif subtotal < 100:
