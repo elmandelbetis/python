@@ -2,7 +2,7 @@
 """
 Name: yo_lo_hice.py
 
-Un adolescente quiso imprimir un simple diseño en pitón como
+Un adolescente quiso imprimir un simple diseño en Python como
 resultado. El diseño que se muestra a continuación fue el resultado:
 *
 **
