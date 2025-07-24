@@ -17,7 +17,7 @@ abreviatura de dos caracteres en una lista. La función sólo debe
 devolver esta lista como resultado.
 
 """
-from random import randrange
+from random import shuffle
 
 # Clase Carta para definir las cartas que vamos a utilizar en cada baraja
 class Carta:
@@ -58,6 +58,27 @@ class Carta:
 class Baraja:
     
     def __init__(self):
+        # Creamos los 52 objetos de tipo Carta
+        self.cartas = [Carta(val, traje)
+                       for val in Carta.valores
+                       for traje in Carta.trajes]
+        
+    def __len__(self):
+        return len(self.cartas)
+    
+    def __str__(self):
+        return " ".join(c.codigo() for c in self.cartas)
+    
+    def barajar(self):
+        shuffle(self.cartas)
+        
+        
+# MAIN
+deck = Baraja()
+deck.barajar()
+
+print(deck)        
+        
         
         
 
