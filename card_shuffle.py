@@ -17,4 +17,47 @@ abreviatura de dos caracteres en una lista. La función sólo debe
 devolver esta lista como resultado.
 
 """
+from random import randrange
+
+# Clase Carta para definir las cartas que vamos a utilizar en cada baraja
+class Carta:
+
+    valores = ["2", "3", "4", "5", "6", "7", "8", "9", "T", "J", "Q", "K", "A"]
+    trajes = ["h", "c", "d", "s"]
+
+    def __init__(self, numero, traje):
+        if numero not in Carta.valores:
+            raise ValueError(f"Valor inválido: {numero!r}")
+        if traje not in Carta.trajes:
+            raise ValueError(f"Valor inválido: {traje!r}")
+            
+        self.numero = numero
+        self.traje = traje
+        
+    def __str__(self):
+        # Representación legible: "A♥", "T♠", etc.
+        simbolos = {"h":"♥", "d":"♦", "c":"♣", "s":"♠"}
+        return f"{self.numero}{simbolos[self.traje]}"
+    
+    def __repr__(self):
+        return f"Carta({self.numero!r}, {self.traje!r}"
+    
+    def __eq__(self, other):
+        # Comparación de dos cartas
+        return isinstance(other, Carta) and \
+            (self.numero, self.traje) == (other.numero, other.traje)
+            
+    def codigo(self):
+        return f"{self.numero}{self.traje}"
+            
+        
+# Clase Baraja para almacenar las 52 cartas que se crean para cada una de ellas
+
+# De esta manera hacemos que el programa sea reutilizable, pudiendo crear todas las barajas
+# que queramos
+class Baraja:
+    
+    def __init__(self):
+        
+        
 
