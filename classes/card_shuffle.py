@@ -46,10 +46,7 @@ class Carta:
         # Comparación de dos cartas
         return isinstance(other, Carta) and \
             (self.numero, self.traje) == (other.numero, other.traje)
-            
-    def codigo(self):
-        return f"{self.numero}{self.traje}"
-            
+                        
         
 # Clase Baraja para almacenar las 52 cartas que se crean para cada una de ellas
 
@@ -67,7 +64,7 @@ class Baraja:
         return len(self.cartas)
     
     def __str__(self):
-        return " ".join(c.codigo() for c in self.cartas)
+        return " ".join(str(c) for c in self.cartas)
     
     def barajar(self):
         shuffle(self.cartas)
