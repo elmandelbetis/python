@@ -11,6 +11,7 @@ Métodos: ingreso, reintegro, consulta de saldo, y transferencia a otra cuenta.
 
 """
 
+# Clase CuentaBancaria que implementa los atributos y los métodos pedidos
 class CuentaBancaria:
     numero = ""
     titular = ""
@@ -28,11 +29,21 @@ class CuentaBancaria:
     def ingresar(self, cantidad):
         self.saldo += cantidad
         
-    def reintegro(self, cantidad):
+    def reintegrar(self, cantidad):
         self.saldo -= cantidad
     
-    def consulta_saldo(self):
+    def consultar_saldo(self):
         return self.saldo
     
-    def transferir(self, cuenta2):
+    def transferir(self, other, cantidad_transferida):
+        isinstance(other, CuentaBancaria) # CORREGIR
+        print(f"Se van a transferir {cantidad_transferida} € de la cuenta \
+              *{self.numero[-3:]} a la cuenta *{other.numero[-3:]}. Por favor, espere...")
+        
+        self.saldo -= cantidad_transferida
+        other.saldo += cantidad_transferida
+        
+
+# MAIN
+opcion = ""
         
